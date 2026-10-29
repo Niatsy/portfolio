@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Logan Laporte — Portfolio</title>
+  <!-- Aperçu du lien (LinkedIn, mails, messageries) : ces robots ne lisent pas le JavaScript, le texte est donc écrit ici -->
+  <meta name="description" content="Logan Laporte, assistant chef de projet événementiel · Esport & jeux vidéo. Recherche une alternance de 12 à 24 mois (1 semaine en formation / 3 semaines en entreprise).">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://niatsy.github.io/portfolio/">
+  <meta property="og:title" content="Logan Laporte — Portfolio">
+  <meta property="og:description" content="Assistant chef de projet événementiel · Esport & jeux vidéo. Recherche une alternance de 12 à 24 mois.">
+  <meta property="og:image" content="https://niatsy.github.io/portfolio/apercu.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='5' y='1' width='22' height='30' rx='4' fill='%231e5bd8'/%3E%3Crect x='8' y='4' width='16' height='17' rx='2' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="apple.css"><!-- test style Apple : retirer cette ligne pour revenir à la version précédente -->
+</head>
+<body>
+  <header class="pilule">
+    <a href="#haut" class="pilule-nom" id="pilule-nom"></a>
+    <nav aria-label="Sections"><a href="#paquet">Mes projets</a><a href="#joueur">Profil</a><a href="#vie-pro">Saisons pro</a><a href="#contact">Contact</a></nav>
+    <button type="button" class="menu-bouton" id="menu-bouton" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
+  </header>
+  <nav class="menu" id="menu" aria-label="Menu">
+    <a href="#paquet" style="--i: 0">Mes projets</a>
+    <a href="#joueur" style="--i: 1">Profil</a>
+    <a href="#vie-pro" style="--i: 2">Saisons pro</a>
+    <a href="#contact" style="--i: 3">Contact</a>
+  </nav>
+
+  <main>
+    <section class="ouverture" id="haut">
+      <div class="identite">
+        <h1 id="nom"><span id="nom-1"></span><span id="nom-2"></span></h1>
+        <p id="titre" class="titre"></p>
+        <p class="dispo">
+          <span class="flag">Disponible</span>
+          <span id="recherche"></span>
+        </p>
+        <p class="contact-rapide">
+          <a href="#contact" class="bouton bouton-icone">Me contacter<span class="bouton-pastille" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M6 4.5h5.5V10"/></svg></span></a>
+          <a id="cv-voir" class="bouton bouton-clair bouton-icone" target="_blank" rel="noopener">Voir mon CV<span class="bouton-pastille" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M6 4.5h5.5V10"/></svg></span></a>
+          <a id="cv-telecharger" class="lien-cv" download>Télécharger le CV (PDF)</a>
+        </p>
+      </div>
+      <div class="main-cartes" id="eventail" aria-hidden="true"></div>
+    </section>
+
+    <div class="bandeau"><div class="bandeau-piste" id="bandeau"></div></div>
+
+    <section id="paquet" class="table" aria-labelledby="t-paquet">
+      <div class="table-tete" data-reveal>
+        <p class="surtitre" id="surtitre-projets"></p>
+        <h2 id="t-paquet">Mes projets</h2>
+        <div id="filtres" role="group" aria-label="Trier le paquet"></div>
+        <div id="sous-filtres" role="group" aria-label="Choisir un stage" hidden></div>
+      </div>
+      <ol id="cartes"></ol>
+    </section>
+
+    <section id="joueur" class="joueur" aria-labelledby="t-joueur">
+      <div class="carte-joueur" data-reveal>
+        <div class="recto">
+          <div class="photo" id="joueur-photo"></div>
+          <div class="bandeau-carte">
+            <h2 id="t-joueur"></h2>
+            <p class="mono" id="joueur-titre"></p>
+          </div>
+        </div>
+      </div>
+      <div class="joueur-texte">
+        <p class="manifeste" id="bio"></p>
+        <div class="tuiles" data-reveal>
+          <section class="tuile tuile-parcours"><h3>Parcours</h3><div id="parcours"></div></section>
+          <section class="tuile"><h3>Langues</h3><ul id="langues" class="pastilles"></ul></section>
+          <section class="tuile"><h3>Permis</h3><p id="permis"></p></section>
+        </div>
+      </div>
+      <section class="outils-carrousel" aria-labelledby="t-outils">
+        <h3 id="t-outils">Outils</h3>
+        <div class="carrousel"><div class="carrousel-piste" id="outils"></div></div>
+      </section>
+    </section>
+
+    <section id="vie-pro" class="vie-pro" aria-labelledby="t-vie-pro">
+      <p class="surtitre" id="surtitre-saisons" data-reveal></p>
+      <h2 id="t-vie-pro" data-reveal>Mes saisons pro</h2>
+      <ol id="classeurs" data-reveal></ol>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="t-contact">
+      <p class="surtitre" data-reveal>Disponible pour une alternance</p>
+      <h2 id="t-contact" data-reveal>Contact</h2>
+      <nav id="liens" class="liens" aria-label="Moyens de contact" data-reveal><a id="email" class="email"></a></nav>
+    </section>
+  </main>
+  <footer class="pied"><span id="pied-nom"></span><a href="#haut">Haut de page ↑</a></footer>
+
+  <dialog id="cv" aria-labelledby="cv-titre">
+    <div class="cv-barre">
+      <h2 id="cv-titre">Mon CV</h2>
+      <div class="cv-actions">
+        <a id="cv-dl" class="bouton" download>Télécharger</a>
+        <button type="button" id="cv-fermer">Fermer</button>
+      </div>
+    </div>
+    <iframe id="cv-cadre" title="CV de Logan Laporte (PDF)"></iframe>
+    <p class="cv-secours">Le CV ne s'affiche pas ? <a id="cv-onglet" target="_blank" rel="noopener">Ouvre-le dans un nouvel onglet</a>.</p>
+  </dialog>
+
+  <dialog id="classeur" aria-labelledby="classeur-poste">
+    <div class="classeur-ouvert">
+      <div class="feuillet">
+        <p class="feuillet-meta"><span id="classeur-type" class="flag"></span><span id="classeur-dates"></span></p>
+        <h2 id="classeur-poste"></h2>
+        <p id="classeur-lieu" class="feuillet-lieu"></p>
+        <ul id="classeur-missions"></ul>
+      </div>
+      <div class="anneaux" aria-hidden="true"></div>
+      <div class="feuillet">
+        <div class="feuillet-barre">
+          <h3>Projets</h3>
+          <button type="button" id="classeur-fermer">Refermer</button>
+        </div>
+        <ol id="pochettes"></ol>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="fiche" aria-labelledby="fiche-titre">
+    <article class="verso">
+      <div class="verso-media">
+        <div id="fiche-visuel"></div>
+        <p id="fiche-credit" class="credit" hidden></p>
+      </div>
+      <div class="verso-infos">
+        <div class="verso-haut">
+          <span id="fiche-n" class="mono"></span>
+          <button type="button" id="fiche-fermer">Retourner</button>
+        </div>
+        <h2 id="fiche-titre"></h2>
+        <table class="stats">
+          <tbody>
+            <tr><th scope="row">Catégorie</th><td id="fiche-cat"></td></tr>
+            <tr><th scope="row">Date</th><td id="fiche-date"></td></tr>
+            <tr><th scope="row">Résultat</th><td id="fiche-resultat"></td></tr>
+          </tbody>
+        </table>
+        <p id="fiche-desc"></p>
+        <section class="fiche-outils" id="fiche-outils-bloc">
+          <h3>Outils utilisés</h3>
+          <ul id="fiche-outils"></ul>
+        </section>
+        <a id="fiche-lien" class="lien" target="_blank" rel="noopener" hidden>Voir le projet</a>
+        <nav class="verso-nav" aria-label="Cartes">
+          <button type="button" id="fiche-prec">Carte précédente</button>
+          <button type="button" id="fiche-suiv">Carte suivante</button>
+        </nav>
+      </div>
+    </article>
+  </dialog>
+
+  <script src="projects.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

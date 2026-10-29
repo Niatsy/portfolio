@@ -1,0 +1,177 @@
+/* Test « style Apple » : surfaces blanches, sans bordure noire, coins arrondis, ombre douce qui les surélève.
+   Chargé après style.css ; pour revenir en arrière, retirer la ligne <link rel="stylesheet" href="apple.css"> d'index.html. */
+:root {
+  --rayon: 20px;
+  --ombre: 0 1px 2px rgb(21 21 21 / 0.06), 0 10px 22px rgb(21 21 21 / 0.12);
+  --ombre-haute: 0 2px 4px rgb(21 21 21 / 0.08), 0 22px 44px rgb(21 21 21 / 0.18);
+  --ombre-tapis: 0 1px 2px rgb(0 0 0 / 0.3), 0 14px 30px rgb(0 0 0 / 0.45);
+  --gris-doux: #f2f1ed;
+}
+
+/* Surfaces surélevées : un léger soulèvement au survol, comme un objet qu'on approche */
+.tuile, .email, .classeur-etiquette, .bouton-clair, #filtres button {
+  transition: transform 300ms var(--ressort), box-shadow 300ms var(--ressort), background-color 150ms ease-out, color 150ms ease-out;
+}
+@media (hover: hover) {
+  .tuile:hover, .email:hover { transform: translateY(-3px); box-shadow: var(--ombre-haute); }
+}
+
+/* Menu flottant */
+.pilule { border: 0; background: rgb(255 255 255 / 0.78); box-shadow: var(--ombre); }
+.defile .pilule { box-shadow: var(--ombre-haute); }
+
+/* Boutons du haut */
+.bouton { box-shadow: var(--ombre); }
+.bouton-clair { background: var(--blanc); box-shadow: var(--ombre); }
+.bouton-clair:hover { background: var(--blanc); }
+@media (hover: hover) { .bouton-clair:hover { box-shadow: var(--ombre-haute); transform: translateY(-2px); } }
+
+/* Filtres de la vitrine : pastilles blanches surélevées, la sélection prend la couleur d'équipe */
+#filtres button { border: 0; background: var(--blanc); color: var(--encre); box-shadow: var(--ombre-tapis); }
+#filtres button[aria-pressed="true"] { background: var(--encre); color: var(--blanc); }
+#filtres button[data-cat][aria-pressed="true"] { background: var(--equipe); color: var(--blanc); }
+
+/* Cartes de projets et carte du joueur : coins plus ronds, ombre plus profonde */
+.recto, .dos { border-radius: 18px; box-shadow: var(--ombre-tapis); }
+.recto .photo { border-radius: 10px; overflow: hidden; }
+.dos { border-width: 10px; }
+@media (hover: hover) { a.carte:hover .recto { box-shadow: 0 4px 8px rgb(0 0 0 / 0.3), 0 30px 50px rgb(0 0 0 / 0.55); } }
+.carte-joueur .recto { border-radius: 22px; box-shadow: var(--ombre-haute); }
+.main-cartes .recto { box-shadow: var(--ombre-haute); }
+
+/* Profil : tuiles blanches sans bordure, intertitres sans filet noir */
+.tuile { border: 0; border-radius: var(--rayon); padding: 18px 20px; box-shadow: var(--ombre); }
+.tuile h3 { border-bottom: 1px solid #e6e3dc; color: var(--doux); }
+.pastilles li { border: 0; background: var(--gris-doux); }
+
+/* Saisons pro : classeurs plus arrondis, étiquette blanche flottante */
+.classeur { border-radius: 10px 18px 18px 10px; box-shadow: inset 24px 0 0 rgb(0 0 0 / 0.18), inset 25px 0 0 rgb(255 255 255 / 0.12), var(--ombre-haute); }
+.classeur-etiquette { border-radius: 12px; box-shadow: 0 1px 2px rgb(0 0 0 / 0.12), 0 6px 14px rgb(0 0 0 / 0.16); }
+
+/* Contact : chaque moyen de contact devient une tuile blanche surélevée */
+.contact { border-top: 0; }
+.email { padding: 14px 22px; border-radius: 16px; background: var(--blanc); clip-path: none; box-shadow: var(--ombre); }
+
+/* Fenêtres : verso agrandi, classeur ouvert, CV */
+/* Couleur du stage : bande intérieure qui suit l'arrondi (un bord épais casserait les coins) */
+#fiche { border: 0; padding-top: 10px; border-radius: 24px; box-shadow: inset 0 10px 0 var(--equipe), var(--ombre-haute), 0 40px 80px -20px rgb(21 21 21 / 0.3); }
+.verso button, .feuillet-barre button, .cv-actions button { border: 0; background: var(--gris-doux); box-shadow: none; }
+.verso button:hover, .feuillet-barre button:hover, .cv-actions button:hover { background: #e7e5df; }
+.stats th, .stats td { border-block: 1px solid #e6e3dc; }
+#classeur { border-radius: 24px; box-shadow: 0 40px 80px rgb(0 0 0 / 0.3); }
+.classeur-ouvert { border-radius: 14px; }
+#pochettes > li { border: 0; border-radius: 12px; background: rgb(255 255 255 / 0.55); box-shadow: inset 0 0 0 1px rgb(21 21 21 / 0.08), 0 2px 6px rgb(21 21 21 / 0.06); }
+#cv { border: 0; border-radius: 24px; box-shadow: 0 40px 80px rgb(0 0 0 / 0.3); }
+.cv-barre { border-bottom: 1px solid #e6e3dc; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tuile, .email, .classeur-etiquette, .bouton-clair, #filtres button { transition: none; }
+  .tuile:hover, .email:hover, .bouton-clair:hover { transform: none; }
+}
+
+/* ——— Passe « haut de gamme » (skill high-end-visual-design) : ambiance Soft Structuralism ——— */
+:root {
+  --ressort-doux: cubic-bezier(0.32, 0.72, 0, 1);
+  /* Ombres très diffusées : plusieurs couches légères plutôt qu'une ombre sombre */
+  --ombre: 0 1px 1px rgb(21 21 21 / 0.04), 0 8px 24px -6px rgb(21 21 21 / 0.1), 0 24px 56px -24px rgb(21 21 21 / 0.16);
+  --ombre-haute: 0 1px 2px rgb(21 21 21 / 0.05), 0 14px 34px -8px rgb(21 21 21 / 0.14), 0 40px 80px -32px rgb(21 21 21 / 0.24);
+  --ombre-tapis: 0 2px 6px rgb(0 0 0 / 0.18), 0 22px 44px -14px rgb(0 0 0 / 0.42);
+  /* Double bordure : un plateau clair autour de la surface, comme une plaque posée dans un cadre */
+  --plateau: 0 0 0 6px rgb(255 255 255 / 0.55), 0 0 0 7px rgb(21 21 21 / 0.05);
+  --reflet: inset 0 1px 0 rgb(255 255 255 / 0.9);
+}
+
+/* Apparitions : fondu, montée et léger flou qui se dissipe */
+.anime [data-reveal] { filter: blur(4px); transition: opacity 750ms var(--ressort-doux), translate 800ms var(--ressort-doux), filter 750ms var(--ressort-doux); }
+.anime [data-reveal].vu { filter: none; }
+
+/* Surfaces en double bordure */
+.tuile, .email { box-shadow: var(--plateau), var(--reflet), var(--ombre); }
+.tuiles { gap: 22px; }
+.liens { gap: 22px; }
+.carrousel .logos { gap: 26px; padding-right: 26px; }
+.carrousel .logos li { box-shadow: var(--plateau), var(--reflet), var(--ombre); }
+@media (hover: hover) { .tuile:hover, .email:hover { box-shadow: var(--plateau), var(--reflet), var(--ombre-haute); } }
+.tuile, .email, .classeur-etiquette, .bouton-clair, #filtres button, #sous-filtres button, .bouton {
+  transition: transform 600ms var(--ressort-doux), box-shadow 600ms var(--ressort-doux), background-color 300ms var(--ressort-doux), color 300ms var(--ressort-doux);
+}
+
+/* Boutons « île » : flèche dans sa propre pastille, qui file en diagonale au survol */
+.bouton-icone { display: inline-flex; align-items: center; gap: 12px; padding: 6px 6px 6px 22px; }
+.bouton-pastille { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: rgb(255 255 255 / 0.16); transition: transform 600ms var(--ressort-doux); }
+.bouton-clair .bouton-pastille { background: rgb(21 21 21 / 0.06); }
+.bouton-pastille svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+@media (hover: hover) { .bouton-icone:hover .bouton-pastille { transform: translate(2px, -2px) scale(1.06); } }
+.bouton:active { transform: scale(0.98); }
+/* La levée au survol reste lente, l'appui doit répondre tout de suite */
+.bouton:active, #filtres button:active, #sous-filtres button:active { transition-duration: 150ms; }
+
+/* Petits repères au-dessus des grands titres */
+.surtitre {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgb(21 21 21 / 0.06);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.table .surtitre { margin-bottom: 0; background: rgb(255 255 255 / 0.1); }
+
+/* Respiration entre les grandes sections */
+.vie-pro { padding-block: clamp(40px, 5vw, 72px) clamp(56px, 7vw, 96px); }
+.contact { padding-block: clamp(40px, 5vw, 72px) clamp(80px, 10vw, 140px); }
+/* L'éventail pivote depuis sous ses cartes : sans ce décalage, il apparaît ~100 px plus bas que le texte */
+@media (min-width: 861px) { .main-cartes { translate: 0 -16%; } }
+
+/* Menu mobile : pastille hamburger dans la barre flottante, menu plein écran en verre dépoli */
+.menu-bouton { display: none; position: relative; width: 34px; height: 34px; padding: 0; border: 0; border-radius: 50%; background: rgb(21 21 21 / 0.06); }
+.menu-bouton span { position: absolute; left: 10px; right: 10px; height: 1.5px; border-radius: 2px; background: var(--encre); transition: transform 500ms var(--ressort-doux); }
+.menu-bouton span:first-child { transform: translateY(-3px); }
+.menu-bouton span:last-child { transform: translateY(3px); }
+.menu-ouvert .menu-bouton span:first-child { transform: rotate(45deg); }
+.menu-ouvert .menu-bouton span:last-child { transform: rotate(-45deg); }
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+  display: grid;
+  place-content: center;
+  gap: 18px;
+  text-align: center;
+  background: rgb(233 230 223 / 0.84);
+  -webkit-backdrop-filter: blur(28px) saturate(1.3);
+  backdrop-filter: blur(28px) saturate(1.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 320ms var(--ressort-doux), visibility 0s 320ms;
+}
+.menu a { font-family: var(--slab); font-size: clamp(2rem, 9vw, 3.2rem); line-height: 1; text-decoration: none; text-transform: uppercase; opacity: 0; translate: 0 48px; transition: opacity 600ms var(--ressort-doux), translate 700ms var(--ressort-doux); }
+.menu-ouvert { overflow: hidden; }
+.menu-ouvert .menu { opacity: 1; visibility: visible; transition: opacity 500ms var(--ressort-doux), visibility 0s; }
+.menu-ouvert .menu a { opacity: 1; translate: 0 0; transition-delay: calc(100ms + var(--i) * 60ms); }
+@media (max-width: 860px) {
+  .menu-bouton { display: block; }
+  .pilule { padding: 6px 6px 6px 18px; }
+}
+@media (min-width: 861px) { .menu { display: none; } }
+
+/* Sur mobile : plus d'inclinaisons ni de chevauchements, une colonne aérée */
+@media (max-width: 767px) {
+  #cartes .carte:not(:hover) { transform: none; }
+  .classeur { rotate: none; }
+  .carte-joueur { rotate: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anime [data-reveal] { filter: none; }
+  .menu, .menu-ouvert .menu, .menu a, .menu-bouton span, .bouton-pastille { transition: none; }
+  /* Répété ici : la règle des 600 ms plus haut écrasait celle du début du fichier */
+  .tuile, .email, .classeur-etiquette, .bouton-clair, #filtres button, #sous-filtres button, .bouton { transition: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .menu { background: var(--carton); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
