@@ -261,7 +261,9 @@ const PROJETS = [
     description: "Construction du planning éditorial des réseaux sociaux.",
     resultat: "", // à compléter
     outils: [],
-    image: "",
+    // carte : le coin gauche du planning d'août ; verso : le planning de tournage puis les plannings mois par mois
+    image: "images/projets/planning-wapply/00-carte.jpg",
+    galerie: ["01-tournage-juillet", "02-juillet", "03-aout", "04-septembre", "05-octobre"].map((n) => `images/projets/planning-wapply/${n}.jpg`),
     credit: "",
     lien: "",
   },
