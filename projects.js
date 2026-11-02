@@ -18,7 +18,7 @@ const PROFIL = {
     { quand: "2020 — 2023", quoi: "BTS SIO (Services Informatiques aux Organisations), Ensemble Sainte-Marie (Joinville-le-Pont)" },
   ],
   langues: ["Français (langue maternelle)", "Anglais (B2 professionnel)", "Espagnol (A2, en apprentissage)", "Japonais (A1, en apprentissage)"],
-  outils: ["Canva", "Figma", "Affinity", "Premiere Pro", "CapCut", "Trello", "Discord", "Instagram", "TikTok", "Claude", "ChatGPT", "Excel / Google Sheets", "Pack Office", "Gmail", "Outlook", "Brevo", "Apollo"],
+  outils: ["Canva", "Figma", "Affinity", "Premiere Pro", "CapCut", "Trello", "Discord", "Instagram", "TikTok", "Claude", "ChatGPT", "Excel / Google Sheets", "Pack Office", "Gmail", "Outlook", "Brevo", "Apollo", "Wix"],
   liens: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/logan-laporte-621695223/" },
   ],
@@ -192,7 +192,7 @@ const PROJETS = [
     description: "Recherche de contacts sur Apollo et échanges avec des prestataires.",
     resultat: "", // à compléter : objectif, nombre de contacts
     outils: ["Apollo"],
-    image: "", // visuel suggéré : aucun (carte texte) ou icône Apollo
+    image: "images/projets/prospection/apollo.png", // logo Apollo (fourni par Logan)
     credit: "",
     lien: "",
   },
@@ -290,7 +290,7 @@ const PROJETS = [
     date: "Fin 2022",
     description: "Analyse du référencement naturel du site.",
     resultat: "", // à compléter : recommandations faites ?
-    outils: [],
+    outils: ["Wix"],
     image: "",
     credit: "",
     lien: "",

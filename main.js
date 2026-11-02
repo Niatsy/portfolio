@@ -148,7 +148,7 @@ $("parcours").append(...(PROFIL.parcours ?? []).map((e) => {
 }));
 // Logo quand on en a un (voir images/outils/SOURCES.md), sinon le nom ; « Excel / Google Sheets » affiche les deux
 const logos = { "Canva": ["canva.png"], "Figma": ["figma.svg"], "Affinity": ["affinity.png"], "Trello": ["trello.svg"], "Discord": ["discord.svg"], "Instagram": ["instagram.png"], "TikTok": ["tiktok.svg"], "Claude": ["claude.svg"],
-  "Premiere Pro": ["premiere.png"], "Brevo": ["brevo.png"], "Apollo": ["apollo.png"], "ChatGPT": ["chatgpt.png"], "Gmail": ["gmail.png"], "Outlook": ["outlook.png"],
+  "Premiere Pro": ["premiere.png"], "Brevo": ["brevo.png"], "Apollo": ["apollo.png"], "Wix": ["wix.svg"], "ChatGPT": ["chatgpt.png"], "Gmail": ["gmail.png"], "Outlook": ["outlook.png"],
   "Excel / Google Sheets": ["microsoftexcel.svg", "googlesheets.svg"], "Pack Office": ["microsoftoffice.svg"],
   "Excel": ["microsoftexcel.svg"], "Google Sheets": ["googlesheets.svg"] };
 // Quatre copies à la suite, la piste défile de la moitié (deux copies, plus large que l'écran) : boucle sans trou ni saut.
