@@ -130,7 +130,10 @@ const PROJETS = [
     description: "Réalisation du reporting destiné à LG, partenaire officiel du Major de TFT.",
     resultat: "", // à compléter : KPI présentés
     outils: [],
-    image: "", // visuel suggéré : capture anonymisée du reporting (vérifier la confidentialité)
+    // carte : la photo du stand LG tirée du rapport ; verso : les pages du rapport dans l'ordre
+    image: "images/projets/rapport-lg/00-carte.jpg",
+    galerie: ["01-couverture.jpg", "02-stand-lg.webp", "03-posts-instagram.webp", "04-rendus-logo-cast.webp", "05-photos-evenement.webp"]
+      .map((n) => `images/projets/rapport-lg/${n}`),
     credit: "",
     lien: "",
   },
