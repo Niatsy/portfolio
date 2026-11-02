@@ -205,7 +205,7 @@ const PROJETS = [
     description: "Gestion des stocks de merch laissés à l'ESpot par l'équipe Gen.G (Worlds de LoL 2024). J'ai créé un fichier Excel pour faire l'inventaire des articles.",
     resultat: "", // à compléter
     outils: ["Excel"],
-    image: "", // visuel suggéré : capture anonymisée du tableau
+    image: "images/projets/merch-geng/equipe-geng.webp", // l'équipe Gen.G (LoL)
     credit: "",
     lien: "",
   },
