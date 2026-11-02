@@ -287,7 +287,7 @@ const PROJETS = [
     outils: ["Wix", "Instagram", "WhatsApp"],
     // carte : la photo de la page d'accueil seule (le logo serait caché par la pastille du nom) ; verso : la capture entière
     image: "images/projets/madame-pamplemousse/site-accueil-photo.jpg",
-    galerie: ["images/projets/madame-pamplemousse/site-accueil.webp"],
+    galerie: ["site-accueil.webp", "02-patrons.jpg", "03-qui-suis-je.jpg", "04-instagram.jpg"].map((n) => `images/projets/madame-pamplemousse/${n}`),
     credit: "",
     lien: "", // à compléter : lien du site s'il est encore en ligne
   },
