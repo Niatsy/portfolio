@@ -439,6 +439,8 @@ a.carte:active { transform: scale(0.98) rotate(0deg); transition-duration: 100ms
 .verso button:active { transform: scale(0.96); }
 .verso button:disabled { opacity: 0.35; cursor: default; transform: none; }
 #fiche-visuel img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+/* Capture d'écran montrée en entier au verso (galerie d'une seule image) : ni rognée ni déformée */
+#fiche-visuel img.entiere { aspect-ratio: auto; height: auto; object-fit: contain; border-radius: 10px; }
 /* Galerie du verso : une photo par vue, on glisse à l'horizontale ; les photos en hauteur ne sont pas rognées */
 .galerie { position: relative; overflow: hidden; border-radius: 10px; background: var(--encre); }
 .galerie-piste { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; }

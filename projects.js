@@ -134,7 +134,7 @@ const PROJETS = [
     image: "images/projets/rapport-lg/00-carte.jpg",
     galerie: ["01-couverture.jpg", "02-stand-lg.webp", "03-posts-instagram.webp", "04-rendus-logo-cast.webp", "05-photos-evenement.webp"]
       .map((n) => `images/projets/rapport-lg/${n}`),
-    credit: "",
+    credit: "Léa Bertrand, Chloé Ramdani et un autre photographe", // même événement que le projet 1 (photos du Major)
     lien: "",
   },
   {
@@ -293,7 +293,9 @@ const PROJETS = [
     description: "Analyse du référencement naturel du site.",
     resultat: "", // à compléter : recommandations faites ?
     outils: ["Wix"],
-    image: "",
+    // carte : la capture posée sur fond sombre ; verso : la capture seule
+    image: "images/projets/seo/00-carte.jpg",
+    galerie: ["images/projets/seo/resultat-google.png"],
     credit: "",
     lien: "",
   },

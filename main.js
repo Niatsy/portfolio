@@ -249,7 +249,7 @@ function remplir(i) {
   // Une seule image dans galerie : elle remplace au verso la photo de la carte (ex. capture entière / carte recadrée)
   const visuel = p.galerie?.[0] ?? p.image;
   $("fiche-visuel").replaceChildren(p.galerie?.length > 1 ? galerie(p)
-    : visuel ? el("img", { src: visuel, alt: p.titre }) : el("div", { className: "a-venir", textContent: "Visuel à venir" }));
+    : visuel ? el("img", { src: visuel, alt: p.titre, className: p.galerie ? "entiere" : "" }) : el("div", { className: "a-venir", textContent: "Visuel à venir" }));
   $("fiche-titre").textContent = p.titre;
   $("fiche-cat").textContent = p.domaine ? `${p.categorie} · ${p.domaine}` : p.categorie;
   $("fiche-date").textContent = p.date;
