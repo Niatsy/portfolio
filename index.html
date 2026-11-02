@@ -21,14 +21,13 @@
 <body>
   <header class="pilule">
     <a href="#haut" class="pilule-nom" id="pilule-nom"></a>
-    <nav aria-label="Sections"><a href="#paquet">Mes projets</a><a href="#joueur">Profil</a><a href="#vie-pro">Saisons pro</a><a href="#contact">Contact</a></nav>
+    <nav aria-label="Sections"><a href="#paquet">Mes projets</a><a href="#joueur">Profil</a><a href="#contact">Contact</a></nav>
     <button type="button" class="menu-bouton" id="menu-bouton" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
   </header>
   <nav class="menu" id="menu" aria-label="Menu">
     <a href="#paquet" style="--i: 0">Mes projets</a>
     <a href="#joueur" style="--i: 1">Profil</a>
-    <a href="#vie-pro" style="--i: 2">Saisons pro</a>
-    <a href="#contact" style="--i: 3">Contact</a>
+    <a href="#contact" style="--i: 2">Contact</a>
   </nav>
 
   <main>
@@ -55,7 +54,10 @@
       <div class="table-tete" data-reveal>
         <p class="surtitre" id="surtitre-projets"></p>
         <h2 id="t-paquet">Mes projets</h2>
-        <div id="filtres" role="group" aria-label="Trier le paquet"></div>
+        <div id="filtres" role="group" aria-label="Trier le paquet">
+          <button type="button" id="trier" aria-expanded="false" aria-controls="choix-tri">Trier</button>
+          <span id="choix-tri" hidden></span>
+        </div>
         <div id="sous-filtres" role="group" aria-label="Choisir un stage" hidden></div>
       </div>
       <ol id="cartes"></ol>
@@ -85,12 +87,6 @@
       </section>
     </section>
 
-    <section id="vie-pro" class="vie-pro" aria-labelledby="t-vie-pro">
-      <p class="surtitre" id="surtitre-saisons" data-reveal></p>
-      <h2 id="t-vie-pro" data-reveal>Mes saisons pro</h2>
-      <ol id="classeurs" data-reveal></ol>
-    </section>
-
     <section id="contact" class="contact" aria-labelledby="t-contact">
       <p class="surtitre" data-reveal>Disponible pour une alternance</p>
       <h2 id="t-contact" data-reveal>Contact</h2>
@@ -109,25 +105,6 @@
     </div>
     <iframe id="cv-cadre" title="CV de Logan Laporte (PDF)"></iframe>
     <p class="cv-secours">Le CV ne s'affiche pas ? <a id="cv-onglet" target="_blank" rel="noopener">Ouvre-le dans un nouvel onglet</a>.</p>
-  </dialog>
-
-  <dialog id="classeur" aria-labelledby="classeur-poste">
-    <div class="classeur-ouvert">
-      <div class="feuillet">
-        <p class="feuillet-meta"><span id="classeur-type" class="flag"></span><span id="classeur-dates"></span></p>
-        <h2 id="classeur-poste"></h2>
-        <p id="classeur-lieu" class="feuillet-lieu"></p>
-        <ul id="classeur-missions"></ul>
-      </div>
-      <div class="anneaux" aria-hidden="true"></div>
-      <div class="feuillet">
-        <div class="feuillet-barre">
-          <h3>Projets</h3>
-          <button type="button" id="classeur-fermer">Refermer</button>
-        </div>
-        <ol id="pochettes"></ol>
-      </div>
-    </div>
   </dialog>
 
   <dialog id="fiche" aria-labelledby="fiche-titre">

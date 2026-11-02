@@ -26,7 +26,7 @@ $("recherche").textContent = PROFIL.recherche;
 // Une carte : recto (photo, disque de catégorie, numéro, bandeau titre) et dos commun
 const projets = PROJETS.filter((p) => !p.masque).map((p, i) => ({ ...p, n: deux(i + 1), id: slug(p.titre) || `carte-${i + 1}` }));
 const rotations = [-1.6, 1.2, -0.8, 1.8, -1.2, 0.9];
-// Une couleur par expérience, la même pour son classeur et pour les cartes de ses projets
+// Une couleur par expérience, la même pour toutes les cartes de ses projets
 const couvertures = ["#1e5bd8", "#d62f2f", "#1f8a4c", "#7a4bc2", "#151515"];
 const couleurExperience = (entreprise) => {
   const i = EXPERIENCES.findIndex((x) => x.entreprise === entreprise);
@@ -78,8 +78,15 @@ $("cartes").append(...projets.map((p, i) => {
   return li;
 }));
 
-// Tri : seules les cartes de la sélection restent affichées
+// Tri : « Trier » déplie les catégories ; celle choisie s'affiche seule à côté, un clic dessus retire le tri.
+// Seules les cartes de la sélection restent affichées.
 // « Stage » ouvre une seconde rangée : un bouton par stage (experience vide = tous les stages)
+const trierBouton = $("trier"), choix = $("choix-tri");
+const basculerChoix = (ouvrir) => { choix.hidden = !ouvrir; trierBouton.setAttribute("aria-expanded", ouvrir); };
+trierBouton.onclick = () => basculerChoix(choix.hidden);
+const actif = el("button", { type: "button", hidden: true, onclick: () => trier("Tout") });
+actif.setAttribute("aria-pressed", "true");
+$("filtres").append(actif);
 function trier(categorie, experience = "") {
   const liste = $("cartes");
   if (categorie === "Tout") delete liste.dataset.filtre;
@@ -89,16 +96,19 @@ function trier(categorie, experience = "") {
     li.classList.toggle("choisi", choisi);
     li.firstChild.tabIndex = liste.dataset.filtre && !choisi ? -1 : 0;
   }
-  for (const b of $("filtres").children) b.setAttribute("aria-pressed", b.dataset.valeur === categorie);
+  actif.hidden = categorie === "Tout";
+  actif.textContent = `${categorie} ✕`;
+  actif.dataset.cat = categorie;
+  actif.setAttribute("aria-label", `${categorie}, retirer le tri`);
+  basculerChoix(false);
   $("sous-filtres").hidden = categorie !== "Stage";
   for (const b of $("sous-filtres").children) b.setAttribute("aria-pressed", b.dataset.valeur === experience);
   ajusterTitres(); // les cartes qui réapparaissent n'avaient pas pu être mesurées
 }
 const categories = [...new Set(projets.map((p) => p.categorie))];
-$("filtres").append(...["Tout", ...categories].map((c) => {
+choix.append(...categories.map((c) => {
   const b = el("button", { type: "button", textContent: c, onclick: () => trier(c) });
-  b.dataset.valeur = c;
-  if (c !== "Tout") b.dataset.cat = c;
+  b.dataset.cat = c;
   return b;
 }));
 const stages = EXPERIENCES.map((x) => x.entreprise).filter((e) => projets.some((p) => p.categorie === "Stage" && p.experience === e));
@@ -162,8 +172,6 @@ $("langues").append(...(PROFIL.langues ?? []).map((l) => {
 
 // Repères au-dessus des titres : des chiffres réels, calculés depuis projects.js
 $("surtitre-projets").textContent = `${projets.length} cartes · collection ${new Date().getFullYear()}`;
-const nbStages = EXPERIENCES.filter((x) => x.type === "Stage").length;
-$("surtitre-saisons").textContent = `${nbStages} stages · ${EXPERIENCES.length - nbStages} job étudiant`;
 
 // Menu mobile : le bouton devient une croix, les liens montent un à un ; Échap ou un lien referme
 const menuBouton = $("menu-bouton"), menu = $("menu");
@@ -230,9 +238,6 @@ if (mouvement) {
 // Verso agrandi : adressable par #lien, le bouton retour le referme
 const fiche = $("fiche");
 let courant = -1;
-// Ouvert depuis un classeur : Précédente / Suivante restent dans les cartes de ce classeur
-let suite = null;
-const ordre = () => suite ?? projets.map((_, k) => k);
 
 function remplir(i) {
   const p = projets[i];
@@ -256,9 +261,8 @@ function remplir(i) {
   const lien = $("fiche-lien");
   lien.hidden = !p.lien;
   if (p.lien) lien.href = p.lien;
-  const o = ordre(), k = o.indexOf(i);
-  $("fiche-prec").disabled = k <= 0;
-  $("fiche-suiv").disabled = k === o.length - 1;
+  $("fiche-prec").disabled = i === 0;
+  $("fiche-suiv").disabled = i === projets.length - 1;
   fiche.scrollTop = 0;
 }
 
@@ -288,8 +292,7 @@ function galerie(p) {
   return cadre;
 }
 
-function ouvrir(id, liste = null) {
-  suite = liste;
+function ouvrir(id) {
   history.pushState({ fiche: true }, "", `#${id}`);
   afficherSelonUrl();
 }
@@ -310,10 +313,10 @@ function fermer() {
 }
 
 function voisin(pas) {
-  const o = ordre(), j = o[o.indexOf(courant) + pas];
-  if (j === undefined) return;
-  history.replaceState(history.state, "", `#${projets[j].id}`);
-  remplir(j);
+  const p = projets[courant + pas];
+  if (!p) return;
+  history.replaceState(history.state, "", `#${p.id}`);
+  remplir(courant + pas);
 }
 
 $("fiche-fermer").onclick = fermer;
@@ -321,7 +324,6 @@ $("fiche-prec").onclick = () => voisin(-1);
 $("fiche-suiv").onclick = () => voisin(1);
 fiche.addEventListener("cancel", (e) => { e.preventDefault(); fermer(); });
 fiche.addEventListener("click", (e) => { if (e.target === fiche) fermer(); });
-fiche.addEventListener("close", () => { suite = null; });
 window.addEventListener("popstate", afficherSelonUrl);
 afficherSelonUrl();
 
@@ -352,31 +354,7 @@ if (PROFIL.permis) {
   $("permis").append(el("strong", { textContent: permis }), precision.length ? ` · ${precision.join(" · ")}` : "");
 }
 
-// Mots de 10 lettres ou plus : point de coupure invisible au milieu (« PAMPLE-MOUSSE » si la place manque)
-const coupable = (t) => t.replace(/\S{10,}/g, (m) => m.slice(0, Math.ceil(m.length / 2)) + "\u00AD" + m.slice(Math.ceil(m.length / 2)));
-
-// Mes saisons pro : un classeur de cartes fermé par expérience, chacun avec son motif ; on l'ouvre pour voir ses pochettes
-const inclinaisons = [-1.5, 1, -0.6, 1.4, -1];
-const classeur = $("classeur");
-
-$("classeurs").append(...EXPERIENCES.map((x, i) => {
-  // L'expérience vedette : classeur plus grand, poste sur l'étiquette, ruban doré
-  const b = el("button", { type: "button", className: x.vedette ? "classeur vedette" : "classeur", onclick: () => ouvrirClasseur(x, i) },
-    el("span", { className: "classeur-etiquette" },
-      el("strong", { textContent: coupable(x.entreprise) }),
-      x.vedette ? el("em", { textContent: x.poste }) : "",
-      el("span", { textContent: x.dates })),
-    el("span", { className: "classeur-type", textContent: x.type }),
-    x.vedette ? el("span", { className: "ruban", textContent: "Expérience phare" }) : "",
-  );
-  b.setAttribute("aria-label", `${x.entreprise}, ${x.poste}, ${x.dates}`);
-  b.style.setProperty("--couverture", couvertures[i % couvertures.length]);
-  b.style.setProperty("--r", `${inclinaisons[i % inclinaisons.length]}deg`);
-  b.dataset.motif = i % 5;
-  return el("li", {}, b);
-}));
-
-// Un mot trop long pour sa place (« PAMPLEMOUSSE », « PROMOTIONNELLES ») rapetisse jusqu'à tenir, au lieu de déborder ou d'être coupé
+// Un mot trop long pour sa place (« PROMOTIONNELLES ») rapetisse jusqu'à tenir, au lieu de déborder ou d'être coupé
 function ajuster(selecteur, min) {
   for (const n of document.querySelectorAll(selecteur)) {
     n.style.fontSize = "";
@@ -385,32 +363,6 @@ function ajuster(selecteur, min) {
   }
 }
 function ajusterTitres() { ajuster(".bandeau-carte h3", 9); }
-const ajusterTout = () => { ajuster(".classeur-etiquette strong", 11); ajusterTitres(); };
-ajusterTout();
-document.fonts.ready.then(ajusterTout);
-addEventListener("resize", ajusterTout);
-
-function ouvrirClasseur(x, i) {
-  classeur.style.setProperty("--couverture", couvertures[i % couvertures.length]);
-  $("classeur-type").textContent = x.type;
-  $("classeur-dates").textContent = x.dates;
-  $("classeur-poste").textContent = x.poste;
-  $("classeur-lieu").textContent = `${x.entreprise} · ${x.lieu}`;
-  $("classeur-missions").replaceChildren(...x.missions.map((m) => el("li", { textContent: m })));
-  // Neuf pochettes par page : les cartes des projets de cette expérience, le reste vide
-  const siens = projets.filter((p) => p.experience === x.entreprise);
-  const pochettes = siens.map((p, k) => {
-    const c = carte(p, k + 1, "button");
-    c.type = "button";
-    c.setAttribute("aria-label", p.titre);
-    // le verso s'ouvre par-dessus : le classeur reste ouvert dessous
-    c.onclick = () => ouvrir(p.id, siens.map((s) => projets.indexOf(s)));
-    return el("li", {}, c);
-  });
-  while (pochettes.length < 9) pochettes.push(el("li", { className: "vide" }));
-  $("pochettes").replaceChildren(...pochettes);
-  classeur.showModal();
-  ajusterTitres(); // les pochettes ne se mesurent qu'une fois le classeur affiché
-}
-$("classeur-fermer").onclick = () => classeur.close();
-classeur.addEventListener("click", (e) => { if (e.target === classeur) classeur.close(); });
+ajusterTitres();
+document.fonts.ready.then(ajusterTitres);
+addEventListener("resize", ajusterTitres);
