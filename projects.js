@@ -252,7 +252,10 @@ const PROJETS = [
     description: "Création de contenus vidéo pour Instagram et Facebook, du tournage au montage. J'ai fait vivre les comptes avec des formats variés et complémentaires : micro-trottoirs et « Devine mon métier » pour aller à la rencontre du public, interviews et présentations métier, vidéos conseils en face cam et en draw, et des formats humoristiques comme les POV et les vidéos react. Chaque format avait son jour dans le planning éditorial, pour une publication régulière.",
     resultat: "", // à compléter
     outils: ["Canva", "CapCut", "WhatsApp"],
-    image: "",
+    // miniatures des vidéos publiées : micro-trottoirs, conseils face cam et draw, humour
+    image: "images/projets/contenus-wapply/01-metier-salaire-1.jpg",
+    galerie: ["01-metier-salaire-1", "02-photo-cv-1", "03-metier-salaire-2", "04-metier-salaire-3", "05-astuces-stress", "06-motivation-humour", "07-draw-rupture-conventionnelle", "08-astuces-cv", "09-face-cam", "10-photo-cv-2", "11-green-flags-entretien", "12-metier-salaire-4", "13-draw-prime-activite"]
+      .map((n) => `images/projets/contenus-wapply/${n}.jpg`),
     credit: "",
     lien: "",
   },
