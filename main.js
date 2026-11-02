@@ -124,7 +124,7 @@ trier("Tout");
 // que l'écran) : boucle sans trou ni saut. Une pièce par élément, étoiles comprises : tous les espaces sont égaux.
 // Seule la première copie est lue par les lecteurs d'écran, sans les étoiles
 $("bandeau").append(...Array.from({ length: 6 }, (_, k) =>
-  ["URGENT", "✦", "Recherche d'alternance pour décembre 2026 maximum", "✦"].map((t) => {
+  ["URGENT", "✦", "Recherche d'alternance pour décembre 2026", "✦"].map((t) => {
     const s = el("span", { textContent: t });
     if (k || t === "✦") s.setAttribute("aria-hidden", "true");
     return s;
