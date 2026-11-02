@@ -2,6 +2,8 @@
 
 - canva.png, affinity.png, premiere.png, instagram.png, gmail.png, outlook.png, chatgpt.png : fournis par Logan (logos officiels des marques)
 - brevo.png (le « B » du logo, recadré), apollo.png (le symbole sur fond jaune, recadré, coins arrondis) : d'après les logos fournis par Logan
+- teams.svg, googledrive.svg, twitch.svg, linkedin.svg, whatsapp.svg : SVG Logos de gilbarbara (CC0), via api.iconify.design (logos:*)
+- googledocs.svg : Simple Icons (CC0), via api.iconify.design (simple-icons:googledocs), recoloré en #4285F4 (bleu Google)
 - wix.svg : Simple Icons (CC0), via api.iconify.design (simple-icons:wix), en noir
 - figma.svg, trello.svg, discord.svg, claude.svg, tiktok.svg : SVG Logos de gilbarbara (CC0), via api.iconify.design (logos:*)
 - microsoftexcel.svg : vscode-icons (MIT), via api.iconify.design (vscode-icons:file-type-excel)

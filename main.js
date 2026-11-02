@@ -150,7 +150,8 @@ $("parcours").append(...(PROFIL.parcours ?? []).map((e) => {
 const logos = { "Canva": ["canva.png"], "Figma": ["figma.svg"], "Affinity": ["affinity.png"], "Trello": ["trello.svg"], "Discord": ["discord.svg"], "Instagram": ["instagram.png"], "TikTok": ["tiktok.svg"], "Claude": ["claude.svg"],
   "Premiere Pro": ["premiere.png"], "Brevo": ["brevo.png"], "Apollo": ["apollo.png"], "Wix": ["wix.svg"], "ChatGPT": ["chatgpt.png"], "Gmail": ["gmail.png"], "Outlook": ["outlook.png"],
   "Excel / Google Sheets": ["microsoftexcel.svg", "googlesheets.svg"], "Pack Office": ["microsoftoffice.svg"],
-  "Excel": ["microsoftexcel.svg"], "Google Sheets": ["googlesheets.svg"] };
+  "Excel": ["microsoftexcel.svg"], "Google Sheets": ["googlesheets.svg"], "Teams": ["teams.svg"], "Google Drive": ["googledrive.svg"],
+  "Google Docs": ["googledocs.svg"], "LinkedIn": ["linkedin.svg"], "WhatsApp": ["whatsapp.svg"], "Twitch": ["twitch.svg"] };
 // Logos qui écrivent déjà le nom de l'outil : inutile de le répéter à côté
 const logosNommes = new Set(["Wix"]);
 // Quatre copies à la suite, la piste défile de la moitié (deux copies, plus large que l'écran) : boucle sans trou ni saut.
@@ -253,6 +254,7 @@ function remplir(i) {
   $("fiche-visuel").replaceChildren(p.galerie?.length > 1 ? galerie(p)
     : visuel ? el("img", { src: visuel, alt: p.titre, className: p.galerie ? "entiere" : "" }) : el("div", { className: "a-venir", textContent: "Visuel à venir" }));
   $("fiche-titre").textContent = p.titre;
+  requestAnimationFrame(() => ajuster("#fiche-titre", 16)); // mot trop long (« PROMOTIONNELLES ») : rapetissé une fois affiché, jamais coupé
   $("fiche-cat").textContent = p.domaine ? `${p.categorie} · ${p.domaine}` : p.categorie;
   $("fiche-date").textContent = p.date;
   // Outils utilisés : logo + nom quand on a le logo, sinon le nom seul ; bloc masqué s'il n'y en a pas

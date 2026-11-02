@@ -18,7 +18,7 @@ const PROFIL = {
     { quand: "2020 — 2023", quoi: "BTS SIO (Services Informatiques aux Organisations), Ensemble Sainte-Marie (Joinville-le-Pont)" },
   ],
   langues: ["Français (langue maternelle)", "Anglais (B2 professionnel)", "Espagnol (A2, en apprentissage)", "Japonais (A1, en apprentissage)"],
-  outils: ["Canva", "Figma", "Affinity", "Premiere Pro", "CapCut", "Trello", "Discord", "Instagram", "TikTok", "Claude", "ChatGPT", "Excel / Google Sheets", "Pack Office", "Gmail", "Outlook", "Brevo", "Apollo", "Wix"],
+  outils: ["Canva", "Figma", "Affinity", "Premiere Pro", "CapCut", "Trello", "Discord", "Instagram", "TikTok", "Claude", "ChatGPT", "Excel / Google Sheets", "Pack Office", "Gmail", "Outlook", "Brevo", "Apollo", "Wix", "Teams", "Google Drive", "Google Docs", "LinkedIn", "WhatsApp", "Twitch", "Shotgun"],
   liens: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/logan-laporte-621695223/" },
   ],
@@ -96,7 +96,7 @@ const PROJETS = [
     date: "Été 2026",
     description: "Coordination de l'Artist Alley du Major de TFT, un événement de plus de 400 participants. J'ai participé aux réunions avec les partenaires (Riot Games, LG Gaming) et les artistes, puis contribué à la mise en place de l'événement sur site.",
     resultat: "", // à compléter : nombre d'artistes, retours, ventes…
-    outils: [],
+    outils: ["Teams", "Canva", "Outlook", "Google Sheets", "Trello"],
     image: "images/projets/major-tft/06-file-attente-espot.jpg", // photo de la carte
     // galerie = toutes les photos du verso, dans l'ordre de défilement (site « cartes ») : l'Artist Alley d'abord, puis l'événement
     galerie: [
@@ -116,7 +116,7 @@ const PROJETS = [
     date: "Été 2026",
     description: "J'ai repéré que VistaPrint n'avait lancé en production que la moitié de la commande d'impressions pour le Major de TFT. Avec mes collègues, nous avons passé une nouvelle commande chez CopyTop pour tenir les délais.",
     resultat: "", // à compléter : supports livrés à temps ?
-    outils: [],
+    outils: ["Canva", "Outlook", "Google Drive"],
     // les supports imprimés du Major, exportés des fichiers d'impression (booklet, X-banners, photocall, selfie card)
     image: "images/projets/impressions-major/09-photocall.jpg",
     galerie: ["09-photocall", "01-booklet-couverture", "02-booklet-le-major", "03-booklet-programme", "04-booklet-quetes", "05-booklet-recompenses",
@@ -133,7 +133,7 @@ const PROJETS = [
     date: "Été 2026",
     description: "Réalisation du reporting destiné à LG, partenaire officiel du Major de TFT.",
     resultat: "", // à compléter : KPI présentés
-    outils: [],
+    outils: ["Canva", "Google Drive", "Instagram", "TikTok", "Twitch", "Discord"],
     // carte : la photo du stand LG tirée du rapport ; verso : les pages du rapport dans l'ordre
     image: "images/projets/rapport-lg/00-carte.jpg",
     galerie: ["01-couverture.jpg", "02-stand-lg.webp", "03-posts-instagram.webp", "04-rendus-logo-cast.webp", "05-photos-evenement.webp"]
@@ -149,7 +149,7 @@ const PROJETS = [
     date: "Été 2026",
     description: "Chef de projet de l'after party : gestion de la sécurité, du DJ, des extras et de l'équipe sur place. J'ai aussi conçu les menus personnalisés de la soirée.",
     resultat: "", // à compléter : nombre de participants
-    outils: [],
+    outils: ["Canva", "Outlook", "Instagram", "Shotgun", "Trello"],
     image: "images/projets/afterparty-bts/01-affiche-dj-yugo.jpg",
     galerie: [
       "01-affiche-dj-yugo.jpg", "02-activites-v1.jpg", "03-activites-v2.jpg", "04-menu-snacks.webp", "05-menu-cocktails.webp",
@@ -165,7 +165,7 @@ const PROJETS = [
     date: "Été 2026",
     description: "Création d'affiches, de vidéos pour le compte Instagram de l'ESpot et propositions d'idées de posts pour les partenaires.",
     resultat: "", // à compléter : vues, engagement
-    outils: [], // à compléter : Canva ? Affinity ? CapCut ?
+    outils: ["Affinity", "Canva"],
     image: "images/projets/communication-espot/02-affiche-catalogue-fond.webp",
     // affiche « Notre catalogue de jeux » : le fond seul, puis la version finale avec QR code
     galerie: ["02-affiche-catalogue-fond", "01-affiche-catalogue-qr"].map((n) => `images/projets/communication-espot/${n}.webp`),
@@ -178,9 +178,9 @@ const PROJETS = [
     domaine: "Marketing direct",
     experience: "ESpot",
     date: "Été 2026",
-    description: "Création d'une campagne d'e-mailing sur Brevo.",
+    description: "Création d'une campagne d'e-mailing sur Brevo. J'ai réalisé les visuels sur Canva, à partir des visuels déjà créés pour le Major de TFT, pour habiller la campagne aux couleurs de l'événement.",
     resultat: "", // à compléter : objectif, taux d'ouverture, taux de clic
-    outils: ["Brevo"],
+    outils: ["Canva", "Brevo"],
     image: "images/projets/brevo/01-merci-participation.webp",
     // les visuels du mail envoyé après le Major, dans l'ordre du mail
     galerie: ["01-merci-participation", "02-formulaire", "03-suivez-nous", "04-a-tres-bientot"].map((n) => `images/projets/brevo/${n}.webp`),
@@ -195,7 +195,7 @@ const PROJETS = [
     date: "Été 2026",
     description: "Recherche de contacts sur Apollo et échanges avec des prestataires.",
     resultat: "", // à compléter : objectif, nombre de contacts
-    outils: ["Apollo"],
+    outils: ["Google Docs", "Apollo", "LinkedIn"],
     image: "images/projets/prospection/apollo.png", // logo Apollo (fourni par Logan)
     credit: "",
     lien: "",
@@ -208,7 +208,7 @@ const PROJETS = [
     date: "Été 2026",
     description: "Gestion des stocks de merch laissés à l'ESpot par l'équipe Gen.G (Worlds de LoL 2024). J'ai créé un fichier Excel pour faire l'inventaire des articles.",
     resultat: "", // à compléter
-    outils: ["Excel"],
+    outils: ["Excel", "Outlook"],
     image: "images/projets/merch-geng/equipe-geng.webp", // l'équipe Gen.G (LoL)
     credit: "Gen.G × Descente, via esports.gg", // photo officielle de la tenue des Worlds 2024 : esports.gg/news/league-of-legends/gen-g-and-descente-introduce-lol-worlds-2024-uniform/
     lien: "",
@@ -223,7 +223,7 @@ const PROJETS = [
     date: "Été 2025",
     description: "Création d'un planning en version numérique et imprimée.",
     resultat: "", // à compléter : planning de quoi (cours, publications) ?
-    outils: [],
+    outils: ["Canva", "Figma", "WhatsApp"],
     image: "",
     credit: "",
     lien: "",
@@ -236,7 +236,7 @@ const PROJETS = [
     date: "Été 2025",
     description: "Mise en place du matériel pour filmer des vidéos promotionnelles.",
     resultat: "", // à compléter : as-tu aussi fait le montage ? diffusion ?
-    outils: [], // à compléter : CapCut ?
+    outils: [], // pas d'outil pour ce projet (confirmé par Logan)
     image: "",
     credit: "",
     lien: "",
@@ -249,9 +249,9 @@ const PROJETS = [
     domaine: "Social media",
     experience: "Wapply",
     date: "Été 2024",
-    description: "Création de contenus pour Instagram et Facebook.",
+    description: "Création de contenus vidéo pour Instagram et Facebook, du tournage au montage. J'ai fait vivre les comptes avec des formats variés et complémentaires : micro-trottoirs et « Devine mon métier » pour aller à la rencontre du public, interviews et présentations métier, vidéos conseils en face cam et en draw, et des formats humoristiques comme les POV et les vidéos react. Chaque format avait son jour dans le planning éditorial, pour une publication régulière.",
     resultat: "", // à compléter
-    outils: [],
+    outils: ["Canva", "CapCut", "WhatsApp"],
     image: "",
     credit: "",
     lien: "",
@@ -264,7 +264,7 @@ const PROJETS = [
     date: "Été 2024",
     description: "Construction du planning éditorial des réseaux sociaux.",
     resultat: "", // à compléter
-    outils: [],
+    outils: ["Canva"],
     // carte : le coin gauche du planning d'août ; verso : le planning de tournage puis les plannings mois par mois
     image: "images/projets/planning-wapply/00-carte.jpg",
     galerie: ["01-tournage-juillet", "02-juillet", "03-aout", "04-septembre", "05-octobre"].map((n) => `images/projets/planning-wapply/${n}.jpg`),
@@ -281,7 +281,7 @@ const PROJETS = [
     date: "Fin 2022",
     description: "Développement du site internet de la marque sur Wix.",
     resultat: "",
-    outils: ["Wix"],
+    outils: ["Wix", "Instagram", "WhatsApp"],
     // carte : la photo de la page d'accueil seule (le logo serait caché par la pastille du nom) ; verso : la capture entière
     image: "images/projets/madame-pamplemousse/site-accueil-photo.jpg",
     galerie: ["images/projets/madame-pamplemousse/site-accueil.webp"],
