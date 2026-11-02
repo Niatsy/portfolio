@@ -151,6 +151,8 @@ const logos = { "Canva": ["canva.png"], "Figma": ["figma.svg"], "Affinity": ["af
   "Premiere Pro": ["premiere.png"], "Brevo": ["brevo.png"], "Apollo": ["apollo.png"], "Wix": ["wix.svg"], "ChatGPT": ["chatgpt.png"], "Gmail": ["gmail.png"], "Outlook": ["outlook.png"],
   "Excel / Google Sheets": ["microsoftexcel.svg", "googlesheets.svg"], "Pack Office": ["microsoftoffice.svg"],
   "Excel": ["microsoftexcel.svg"], "Google Sheets": ["googlesheets.svg"] };
+// Logos qui écrivent déjà le nom de l'outil : inutile de le répéter à côté
+const logosNommes = new Set(["Wix"]);
 // Quatre copies à la suite, la piste défile de la moitié (deux copies, plus large que l'écran) : boucle sans trou ni saut.
 // Seule la première copie est lue par les lecteurs d'écran
 const listeOutils = (cachee) => {
@@ -254,8 +256,10 @@ function remplir(i) {
   $("fiche-cat").textContent = p.domaine ? `${p.categorie} · ${p.domaine}` : p.categorie;
   $("fiche-date").textContent = p.date;
   // Outils utilisés : logo + nom quand on a le logo, sinon le nom seul ; bloc masqué s'il n'y en a pas
+  // Logo qui écrit déjà le nom (Wix) : le logo seul, le nom passe dans le texte alternatif
   $("fiche-outils").replaceChildren(...p.outils.map((o) => el("li", {},
-    ...(logos[o] ?? []).map((f) => el("img", { src: `images/outils/${f}`, alt: "", width: 22, height: 22 })), o)));
+    ...(logos[o] ?? []).map((f) => el("img", { src: `images/outils/${f}`, alt: logosNommes.has(o) ? o : "", ...(logosNommes.has(o) ? { width: 40, height: 22, style: "width: 40px; height: 22px; object-fit: cover" } : { width: 22, height: 22 }) })),
+    logosNommes.has(o) ? "" : o)));
   $("fiche-outils-bloc").hidden = !p.outils.length;
   $("fiche-resultat").textContent = p.resultat ?? "";
   $("fiche-resultat").parentElement.hidden = !p.resultat;
