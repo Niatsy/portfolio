@@ -210,7 +210,7 @@ const PROJETS = [
     resultat: "", // à compléter
     outils: ["Excel"],
     image: "images/projets/merch-geng/equipe-geng.webp", // l'équipe Gen.G (LoL)
-    credit: "",
+    credit: "Gen.G × Descente, via esports.gg", // photo officielle de la tenue des Worlds 2024 : esports.gg/news/league-of-legends/gen-g-and-descente-introduce-lol-worlds-2024-uniform/
     lien: "",
   },
 
