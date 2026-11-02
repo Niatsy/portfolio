@@ -32,9 +32,8 @@
 #filtres button[data-cat][aria-pressed="true"] { background: var(--equipe); color: var(--blanc); }
 
 /* Cartes de projets et carte du joueur : coins plus ronds, ombre plus profonde */
-.recto, .dos { border-radius: 18px; box-shadow: var(--ombre-tapis); }
+.recto { border-radius: 18px; box-shadow: var(--ombre-tapis); }
 .recto .photo { border-radius: 10px; overflow: hidden; }
-.dos { border-width: 10px; }
 @media (hover: hover) { a.carte:hover .recto { box-shadow: 0 4px 8px rgb(0 0 0 / 0.3), 0 30px 50px rgb(0 0 0 / 0.55); } }
 .carte-joueur .recto { border-radius: 22px; box-shadow: var(--ombre-haute); }
 .main-cartes .recto { box-shadow: var(--ombre-haute); }

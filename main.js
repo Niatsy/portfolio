@@ -25,7 +25,7 @@ $("titre").textContent = PROFIL.titre;
 const [recherche, ...rythme] = PROFIL.recherche.split(" (");
 $("recherche").append(recherche, ...(rythme.length ? [el("br"), el("span", { className: "rythme", textContent: `(${rythme.join(" (")}` })] : []));
 
-// Une carte : recto (photo, disque de catégorie, numéro, bandeau titre) et dos commun
+// Une carte : photo, nom de la structure, bandeau titre
 const projets = PROJETS.filter((p) => !p.masque).map((p, i) => ({ ...p, n: deux(i + 1), id: slug(p.titre) || `carte-${i + 1}` }));
 const rotations = [-1.6, 1.2, -0.8, 1.8, -1.2, 0.9];
 // Une couleur par expérience, la même pour toutes les cartes de ses projets
@@ -49,7 +49,6 @@ function carte(p, i, tag = "a") {
         el("p", { textContent: `${p.domaine || p.categorie} · ${p.date}` }),
       ),
     ),
-    el("div", { className: "dos", textContent: initiales, ariaHidden: "true" }),
   );
   c.dataset.cat = p.categorie;
   if (couleurExperience(p.experience)) c.style.setProperty("--equipe", couleurExperience(p.experience));
