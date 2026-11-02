@@ -159,7 +159,9 @@ const PROJETS = [
     description: "Création d'affiches, de vidéos pour le compte Instagram de l'ESpot et propositions d'idées de posts pour les partenaires.",
     resultat: "", // à compléter : vues, engagement
     outils: [], // à compléter : Canva ? Affinity ? CapCut ?
-    image: "", // visuel suggéré : 2 ou 3 affiches + une vidéo
+    image: "images/projets/communication-espot/01-affiche-catalogue-qr.webp",
+    // affiche « Notre catalogue de jeux » : version finale avec QR code, puis le fond seul
+    galerie: ["01-affiche-catalogue-qr", "02-affiche-catalogue-fond"].map((n) => `images/projets/communication-espot/${n}.webp`),
     credit: "",
     lien: "",
   },
