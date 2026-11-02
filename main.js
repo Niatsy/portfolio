@@ -23,7 +23,7 @@ $("pied-nom").textContent = `© ${new Date().getFullYear()} ${PROFIL.nom}`;
 $("titre").textContent = PROFIL.titre;
 // La précision entre parenthèses (rythme de l'alternance) passe à la ligne
 const [recherche, ...rythme] = PROFIL.recherche.split(" (");
-$("recherche").append(recherche, ...(rythme.length ? [el("br"), `(${rythme.join(" (")}`] : []));
+$("recherche").append(recherche, ...(rythme.length ? [el("br"), el("span", { className: "rythme", textContent: `(${rythme.join(" (")}` })] : []));
 
 // Une carte : recto (photo, disque de catégorie, numéro, bandeau titre) et dos commun
 const projets = PROJETS.filter((p) => !p.masque).map((p, i) => ({ ...p, n: deux(i + 1), id: slug(p.titre) || `carte-${i + 1}` }));
@@ -40,8 +40,8 @@ function carte(p, i, tag = "a") {
     el("div", { className: "recto" },
       el("div", { className: "photo" },
         p.image ? el("img", { src: p.image, alt: "", loading: "lazy" }) : el("div", { className: "a-venir", textContent: p.n }),
-        el("span", { className: "disque", textContent: p.categorie[0], ariaHidden: "true" }),
-        el("span", { className: "numero", textContent: `#${p.n}` }),
+        // Pastille en haut à gauche : la structure du stage (ESpot, Wapply…)
+        p.experience ? el("span", { className: "entreprise", textContent: p.experience }) : "",
         i === 0 ? el("span", { className: "rookie", textContent: "Best project" }) : "",
       ),
       el("div", { className: "bandeau-carte" },
@@ -364,7 +364,7 @@ function ajuster(selecteur, min) {
     while (n.scrollWidth > n.clientWidth + 1 && taille > min) n.style.fontSize = `${--taille}px`;
   }
 }
-function ajusterTitres() { ajuster(".bandeau-carte h3", 9); }
+function ajusterTitres() { ajuster(".bandeau-carte h3", 9); ajuster(".entreprise", 8); }
 ajusterTitres();
 document.fonts.ready.then(ajusterTitres);
 addEventListener("resize", ajusterTitres);
