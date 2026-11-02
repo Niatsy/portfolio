@@ -273,7 +273,9 @@ const PROJETS = [
     description: "Développement du site internet de la marque sur Wix.",
     resultat: "",
     outils: ["Wix"],
-    image: "",
+    // carte : la photo de la page d'accueil seule (le logo serait caché par la pastille du nom) ; verso : la capture entière
+    image: "images/projets/madame-pamplemousse/site-accueil-photo.jpg",
+    galerie: ["images/projets/madame-pamplemousse/site-accueil.webp"],
     credit: "",
     lien: "", // à compléter : lien du site s'il est encore en ligne
   },
