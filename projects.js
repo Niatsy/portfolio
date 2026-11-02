@@ -118,9 +118,9 @@ const PROJETS = [
     resultat: "", // à compléter : supports livrés à temps ?
     outils: [],
     // les supports imprimés du Major, exportés des fichiers d'impression (booklet, X-banners, photocall, selfie card)
-    image: "images/projets/impressions-major/01-booklet-couverture.jpg",
-    galerie: ["01-booklet-couverture", "02-booklet-le-major", "03-booklet-programme", "04-booklet-quetes", "05-booklet-recompenses",
-      "06-booklet-merci", "07-xbanner-plans", "08-xbanner-tournoi", "09-photocall", "10-selfie-card"]
+    image: "images/projets/impressions-major/09-photocall.jpg",
+    galerie: ["09-photocall", "01-booklet-couverture", "02-booklet-le-major", "03-booklet-programme", "04-booklet-quetes", "05-booklet-recompenses",
+      "06-booklet-merci", "07-xbanner-plans", "08-xbanner-tournoi", "10-selfie-card"]
       .map((n) => `images/projets/impressions-major/${n}.jpg`),
     credit: "",
     lien: "",

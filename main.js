@@ -292,10 +292,13 @@ function galerie(p) {
     suiv.disabled = k === n - 1;
   }, { passive: true });
   const cadre = el("div", { className: "galerie" }, piste, prec, suiv, compteur);
-  // Affiches et menus en hauteur : le cadre passe en hauteur pour qu'on puisse les lire
-  const premiere = piste.firstChild;
-  const orienter = () => cadre.classList.toggle("galerie-haute", premiere.naturalHeight > premiere.naturalWidth);
-  if (premiere.complete) orienter(); else premiere.addEventListener("load", orienter);
+  // Affiches et menus en hauteur : le cadre passe en hauteur si la plupart des images le sont (une photo large en tête ne suffit pas à tout rapetisser)
+  const images = [...piste.children];
+  const orienter = () => {
+    const chargees = images.filter((i) => i.naturalWidth);
+    cadre.classList.toggle("galerie-haute", chargees.filter((i) => i.naturalHeight > i.naturalWidth).length * 2 > chargees.length);
+  };
+  for (const i of images) { i.loading = "eager"; if (i.complete) orienter(); else i.addEventListener("load", orienter); }
   return cadre;
 }
 
