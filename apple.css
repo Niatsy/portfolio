@@ -115,7 +115,9 @@
 .table .surtitre { margin-bottom: 0; background: rgb(255 255 255 / 0.1); }
 
 /* Respiration entre les grandes sections */
-.contact { padding-block: clamp(40px, 5vw, 72px) clamp(80px, 10vw, 140px); }
+.contact { padding-block: clamp(8px, 1vw, 12px) clamp(80px, 10vw, 140px); }
+/* Espace entre les outils et Contact réduit de moitié (demande du 2026-11-02) */
+.joueur { padding-bottom: clamp(20px, 2.5vw, 40px); }
 /* L'éventail pivote depuis sous ses cartes : sans ce décalage, il apparaît ~100 px plus bas que le texte */
 @media (min-width: 861px) { .main-cartes { translate: 0 -16%; } }
 

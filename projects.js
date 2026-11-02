@@ -160,8 +160,8 @@ const PROJETS = [
     resultat: "", // à compléter : vues, engagement
     outils: [], // à compléter : Canva ? Affinity ? CapCut ?
     image: "images/projets/communication-espot/01-affiche-catalogue-qr.webp",
-    // affiche « Notre catalogue de jeux » : version finale avec QR code, puis le fond seul
-    galerie: ["01-affiche-catalogue-qr", "02-affiche-catalogue-fond"].map((n) => `images/projets/communication-espot/${n}.webp`),
+    // affiche « Notre catalogue de jeux » : le fond seul, puis la version finale avec QR code
+    galerie: ["02-affiche-catalogue-fond", "01-affiche-catalogue-qr"].map((n) => `images/projets/communication-espot/${n}.webp`),
     credit: "",
     lien: "",
   },

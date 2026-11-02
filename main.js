@@ -21,7 +21,9 @@ $("nom-2").textContent = reste.join(" ");
 $("pilule-nom").textContent = PROFIL.nom;
 $("pied-nom").textContent = `© ${new Date().getFullYear()} ${PROFIL.nom}`;
 $("titre").textContent = PROFIL.titre;
-$("recherche").textContent = PROFIL.recherche;
+// La précision entre parenthèses (rythme de l'alternance) passe à la ligne
+const [recherche, ...rythme] = PROFIL.recherche.split(" (");
+$("recherche").append(recherche, ...(rythme.length ? [el("br"), `(${rythme.join(" (")}`] : []));
 
 // Une carte : recto (photo, disque de catégorie, numéro, bandeau titre) et dos commun
 const projets = PROJETS.filter((p) => !p.masque).map((p, i) => ({ ...p, n: deux(i + 1), id: slug(p.titre) || `carte-${i + 1}` }));
