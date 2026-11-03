@@ -13,9 +13,9 @@ const PROFIL = {
   cv: "documents/CV-Logan-Laporte.pdf", // bouton « Mon CV » en haut des sites (laisser vide pour le masquer)
   // parcours, langues et outils : affichés dans la section « À propos » (laisser [] si inutile)
   parcours: [
-    { quand: "2026 — 2028", quoi: "MBA Stratégie Marketing et Pilotage de Projets, Gaming Business School (Lyon), en français" },
-    { quand: "2023 — 2026", quoi: "Bachelor Management & Business, option Jeux vidéo et Esport, Gaming Business School (La Défense), en anglais" },
-    { quand: "2020 — 2023", quoi: "BTS SIO (Services Informatiques aux Organisations), Ensemble Sainte-Marie (Joinville-le-Pont)" },
+    { quand: "2026 - 2028", quoi: "MBA Stratégie Marketing et Pilotage de Projets, Gaming Business School (Lyon), en français" },
+    { quand: "2023 - 2026", quoi: "Bachelor Management & Business, option Jeux vidéo et Esport, Gaming Business School (La Défense), en anglais" },
+    { quand: "2020 - 2023", quoi: "BTS SIO (Services Informatiques aux Organisations), Ensemble Sainte-Marie (Joinville-le-Pont)" },
   ],
   langues: ["Français (langue maternelle)", "Anglais (B2 professionnel)", "Espagnol (A2, en apprentissage)", "Japonais (A1, en apprentissage)"],
   outils: ["Canva", "Figma", "Affinity", "Premiere Pro", "CapCut", "Trello", "Discord", "Instagram", "TikTok", "Claude", "ChatGPT", "Excel / Google Sheets", "Pack Office", "Gmail", "Outlook", "Brevo", "Apollo", "Wix", "Teams", "Google Drive", "Google Docs", "LinkedIn", "WhatsApp", "Twitch", "Shotgun"],
