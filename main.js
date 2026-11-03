@@ -15,7 +15,7 @@ const mouvement = !matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Profil
 const [prenom, ...reste] = PROFIL.nom.split(/\s+/);
-document.title = `${PROFIL.nom} — Portfolio`;
+document.title = `${PROFIL.nom} | Portfolio`;
 $("nom-1").textContent = prenom;
 $("nom-2").textContent = reste.join(" ");
 $("pilule-nom").textContent = PROFIL.nom;
